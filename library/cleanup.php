@@ -24,13 +24,13 @@ function start_cleanup() {
 
     // clean up gallery output in wp
     add_filter('gallery_style', 'gallery_style');
-    
+
     // additional post related cleaning
     add_filter('get_image_tag_class', 'image_tag_class', 0, 4);
     add_filter('get_image_tag', 'image_editor', 0, 4);
     add_filter( 'the_content', 'img_unautop', 30 );
 
-} 
+}
 
 /**
  * Clean up head
@@ -46,8 +46,8 @@ function cleanup_head() {
     remove_action( 'wp_head', 'feed_links_extra', 3 );
 
     // Post and comment feed links
-    remove_action( 'wp_head', 'feed_links', 2 );
-    
+    // remove_action( 'wp_head', 'feed_links', 2 );
+
     // Windows Live Writer
     remove_action( 'wp_head', 'wlwmanifest_link' );
 
@@ -61,7 +61,7 @@ function cleanup_head() {
     remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
 
     // Canonical
-    remove_action('wp_head', 'rel_canonical', 10, 0 );
+    // remove_action('wp_head', 'rel_canonical', 10, 0 );
 
     // Shortlink
     remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
@@ -81,7 +81,7 @@ function cleanup_head() {
     // Prevent unneccecary info from being displayed
     add_filter('login_errors',create_function('$a', "return null;"));
 
-} 
+}
 
 
 // remove WP version from RSS
@@ -151,7 +151,7 @@ function fixed_img_caption_shortcode($attr, $content = null) {
 function image_tag_class($class, $id, $align, $size) {
     $align = 'align' . esc_attr($align);
     return $align;
-} 
+}
 
 // Remove width and height in editor, for a better responsive world.
 function image_editor($html, $id, $alt, $title) {
@@ -167,12 +167,12 @@ function image_editor($html, $id, $alt, $title) {
             'alt="' . $title . '"'
         ),
         $html);
-} 
+}
 
-// Wrap images with figure tag 
+// Wrap images with figure tag
 function img_unautop($pee) {
     $pee = preg_replace('/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '<figure>$1</figure>', $pee);
     return $pee;
-} 
+}
 
 ?>

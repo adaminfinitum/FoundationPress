@@ -14,7 +14,7 @@ Backend Functions
  * @param array $contactmethods
  * @return array
  */
-function mb_contactmethods( $contactmethods ) {
+function fp_contactmethods( $contactmethods ) {
 	unset( $contactmethods['aim'] );
 	unset( $contactmethods['yim'] );
 	unset( $contactmethods['jabber'] );
@@ -22,32 +22,6 @@ function mb_contactmethods( $contactmethods ) {
 	return $contactmethods;
 }
 
-/**
- * Register Widget Areas
- */
-function mb_widgets_init() {
-	// Main Sidebar
-	register_sidebar(array(
-		'name'          => __( 'Main Sidebar', 'mb' ),
-		'id'            => 'main-sidebar',
-		'description'   => __( 'Widgets for Main Sidebar.', 'mb' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h4 class="widget-title">',
-		'after_title'   => '</h4>'
-	));
-
-	// Footer
-	register_sidebar(array(
-		'name'          => __( 'Footer', 'mb' ),
-		'id'            => 'footer-widgets',
-		'description'   => __( 'Widgets for Footer.', 'mb' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h4 class="widget-title">',
-		'after_title'   => '</h4>'
-	));
-}
 
 /**
  * Don't Update Theme
@@ -63,7 +37,7 @@ function mb_widgets_init() {
  * @param string $url, request url
  * @return array request arguments
  */
-function mb_dont_update_theme( $r, $url ) {
+function fp_dont_update_theme( $r, $url ) {
 	if ( 0 !== strpos( $url, 'http://api.wordpress.org/themes/update-check' ) )
 		return $r; // Not a theme update request. Bail immediately.
 	$themes = unserialize( $r['body']['themes'] );
@@ -76,7 +50,7 @@ function mb_dont_update_theme( $r, $url ) {
 /**
  * Remove Dashboard Meta Boxes
  */
-function mb_remove_dashboard_widgets() {
+function fp_remove_dashboard_widgets() {
 	global $wp_meta_boxes;
 	// unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
@@ -91,7 +65,7 @@ function mb_remove_dashboard_widgets() {
 /**
  * Change Admin Menu Order
  */
-function mb_custom_menu_order($menu_ord) {
+function fp_custom_menu_order($menu_ord) {
 	if (!$menu_ord) return true;
 	return array(
 		// 'index.php', // Dashboard
@@ -115,14 +89,14 @@ function mb_custom_menu_order($menu_ord) {
 /**
  * Hide Admin Areas that are not used
  */
-function mb_remove_menu_pages() {
+function fp_remove_menu_pages() {
 	// remove_menu_page('link-manager.php');
 }
 
 /**
  * Remove default link for images
  */
-function mb_imagelink_setup() {
+function fp_imagelink_setup() {
 	$image_set = get_option( 'image_default_link_type' );
 	if ($image_set !== 'none') {
 		update_option('image_default_link_type', 'none');
@@ -132,52 +106,8 @@ function mb_imagelink_setup() {
 /**
  * Show Kitchen Sink in WYSIWYG Editor
  */
-function mb_unhide_kitchensink($args) {
+function fp_unhide_kitchensink($args) {
 	$args['wordpress_adv_hidden'] = false;
 	return $args;
 }
 
-/****************************************
-Frontend
-*****************************************/
-
-/**
- * Enqueue scripts
- */
-function mb_scripts() {
-	// CSS first
-	wp_register_style('mb_style', get_stylesheet_directory_uri().'/style.css', null, '1.0', 'all' );
-	wp_enqueue_style( 'mb_style' );
-	// JavaScript
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-	if ( !is_admin() ) {
-		wp_enqueue_script('jquery');
-		wp_enqueue_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.6.2.min.js', false, NULL );
-		wp_enqueue_script('customplugins', get_template_directory_uri() . '/assets/js/plugins.min.js', array('jquery'), NULL, true );
-		wp_enqueue_script('customscripts', get_template_directory_uri() . '/assets/js/main.min.js', array('jquery'), NULL, true );
-	}
-}
-
-/**
- * Remove Query Strings From Static Resources
- */
-function mb_remove_script_version($src){
-	$parts = explode('?', $src);
-	return $parts[0];
-}
-
-/**
- * Remove Read More Jump
- */
-function mb_remove_more_jump_link($link) {
-	$offset = strpos($link, '#more-');
-	if ($offset) {
-		$end = strpos($link, '"',$offset);
-	}
-	if ($end) {
-		$link = substr_replace($link, '', $offset, $end-$offset);
-	}
-	return $link;
-}

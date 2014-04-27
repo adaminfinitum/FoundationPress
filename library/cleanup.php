@@ -40,7 +40,8 @@ function start_cleanup() {
 function cleanup_head() {
 
     // EditURI link
-    remove_action( 'wp_head', 'rsd_link' );
+    // RSD seems to be needed for Jetpack to automatically post to social media upon publication of posts
+    // remove_action( 'wp_head', 'rsd_link' );
 
     // Category feed links
     remove_action( 'wp_head', 'feed_links_extra', 3 );

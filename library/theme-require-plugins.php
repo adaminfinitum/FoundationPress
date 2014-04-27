@@ -3,7 +3,7 @@
 /**
  * Register the required plugins for this theme.
  */
-function mb_register_required_plugins() {
+function fp_register_required_plugins() {
 
 	$plugins = array(
 
@@ -22,15 +22,50 @@ function mb_register_required_plugins() {
 		),
 
 		array(
-			'name' 				=> 'Pods - Custom Content Types and Fields',
-			'slug' 				=> 'pods',
+			'name' 				=> 'Jetpack by WordPress.com',
+			'slug' 				=> 'jetpack',
 			'required' 			=> true,
 			'force_activation'	=> true
 		),
-
 		array(
-			'name' 				=> 'Google Analytics for WordPress',
-			'slug' 				=> 'google-analytics-for-wordpress',
+			'name' 				=> 'iThemes Security',
+			'slug' 				=> 'better-wp-security',
+			'required' 			=> true,
+			'force_activation'	=> true
+		),
+		array(
+			'name' 				=> 'WP Backitup',
+			'slug' 				=> 'wp-backitup',
+			'required' 			=> true,
+			'force_activation'	=> true
+		),
+		array(
+			'name' 				=> 'RDFaCE',
+			'slug' 				=> 'rdface',
+			'required' 			=> true,
+			'force_activation'	=> true
+		),
+		array(
+			'name' 				=> 'Cookies for Comments',
+			'slug' 				=> 'cookies-for-comments',
+			'required' 			=> true,
+			'force_activation'	=> true
+		),
+		array(
+			'name' 				=> 'Display Widgets',
+			'slug' 				=> 'display-widgets',
+			'required' 			=> true,
+			'force_activation'	=> true
+		),
+		array(
+			'name' 				=> 'Yet Another Related Posts Plugin',
+			'slug' 				=> 'yet-another-related-posts-plugin',
+			'required' 			=> true,
+			'force_activation'	=> true
+		),
+		array(
+			'name' 				=> 'W3 Total Cache',
+			'slug' 				=> 'w3-total-cache',
 			'required' 			=> true,
 			'force_activation'	=> true
 		),
@@ -38,7 +73,7 @@ function mb_register_required_plugins() {
 	);
 
 	// Change this to your theme text domain, used for internationalising strings
-	$theme_text_domain = 'mbplugins';
+	$theme_text_domain = 'fpplugins';
 
 	/**
 	 * Array of configuration settings. Amend each line as needed.

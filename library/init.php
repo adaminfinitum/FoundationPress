@@ -57,7 +57,7 @@ function fp_setup() {
 	add_filter( 'tiny_mce_before_init', 'fp_unhide_kitchensink' );
 
 	// Define custom post type capabilities for use with Members
-	add_action( 'admin_init', 'fp_add_post_type_caps' );
+	// add_action( 'admin_init', 'fp_add_post_type_caps' );
 
 }
 endif; // fp_setup

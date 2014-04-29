@@ -11,65 +11,100 @@ function fp_register_required_plugins() {
 			'name' 				=> 'WordPress SEO by Yoast',
 			'slug' 				=> 'wordpress-seo',
 			'required' 			=> true,
-			'force_activation'	=> true
+			'force_activation'	=> false
 		),
 
 		array(
 			'name' 				=> 'Use Google Libraries',
 			'slug' 				=> 'use-google-libraries',
 			'required' 			=> true,
-			'force_activation'	=> true
+			'force_activation'	=> false
 		),
 
 		array(
 			'name' 				=> 'Jetpack by WordPress.com',
 			'slug' 				=> 'jetpack',
 			'required' 			=> true,
-			'force_activation'	=> true
+			'force_activation'	=> false
 		),
 		array(
 			'name' 				=> 'iThemes Security',
 			'slug' 				=> 'better-wp-security',
 			'required' 			=> true,
-			'force_activation'	=> true
+			'force_activation'	=> false
 		),
 		array(
 			'name' 				=> 'WP Backitup',
 			'slug' 				=> 'wp-backitup',
-			'required' 			=> true,
-			'force_activation'	=> true
+			'required' 			=> false,
+			'force_activation'	=> false
 		),
 		array(
 			'name' 				=> 'RDFaCE',
 			'slug' 				=> 'rdface',
-			'required' 			=> true,
-			'force_activation'	=> true
+			'required' 			=> false,
+			'force_activation'	=> false
 		),
 		array(
 			'name' 				=> 'Cookies for Comments',
 			'slug' 				=> 'cookies-for-comments',
-			'required' 			=> true,
-			'force_activation'	=> true
+			'required' 			=> false,
+			'force_activation'	=> false
 		),
 		array(
 			'name' 				=> 'Display Widgets',
 			'slug' 				=> 'display-widgets',
 			'required' 			=> true,
-			'force_activation'	=> true
+			'force_activation'	=> false
 		),
 		array(
 			'name' 				=> 'Yet Another Related Posts Plugin',
 			'slug' 				=> 'yet-another-related-posts-plugin',
-			'required' 			=> true,
-			'force_activation'	=> true
+			'required' 			=> false,
+			'force_activation'	=> false
 		),
 		array(
 			'name' 				=> 'W3 Total Cache',
 			'slug' 				=> 'w3-total-cache',
-			'required' 			=> true,
-			'force_activation'	=> true
+			'required' 			=> false,
+			'force_activation'	=> false
 		),
-
+		array(
+			'name' 				=> 'Ninja Forms',
+			'slug' 				=> 'ninja-forms',
+			'required' 			=> true,
+			'force_activation'	=> false
+		),
+		array(
+			'name' 				=> 'Sock Em Spambots',
+			'slug' 				=> 'sockem-spambots',
+			'required' 			=> false,
+			'force_activation'	=> false
+		),
+        array(
+			'name' 				=> 'TablePress',
+			'slug' 				=> 'tablepress',
+			'required' 			=> false,
+			'force_activation'	=> false
+		),
+		array(
+			'name' 				=> 'Crayon Syntax Highlighter',
+			'slug' 				=> 'crayon-syntax-highlighter',
+			'required' 			=> false,
+			'force_activation'	=> false
+		),
+		array(
+			'name' 				=> 'EWWW Image Optimizer',
+			'slug' 				=> 'ewww-image-optimizer',
+			'required' 			=> false,
+			'force_activation'	=> false
+		),
+		array(
+			'name' 				=> 'Search Everything',
+			'slug' 				=> 'search-everything',
+			'required' 			=> false,
+			'force_activation'	=> false
+		),
 	);
 
 	// Change this to your theme text domain, used for internationalising strings
